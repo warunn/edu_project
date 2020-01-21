@@ -1,0 +1,221 @@
+@charset "utf-8";
+body {
+font-size:16px;
+}
+#wrapper {
+	width: 1000px;
+	margin-right: auto;
+	margin-left: auto;
+	
+}
+#wrapper #main_banner {
+	width: 1000px;
+	height: 100px;
+	
+}
+#wrapper #main_banner #new_up {
+	height: 71px;
+	float: right;
+	width: 750px;
+}
+
+#wrapper #navigation .button {
+	float: left;
+}
+#wrapper #navigation {
+	width: 1000px;
+}
+#wrapper #side_bar {
+	float: left;
+	width: 250px;
+	
+	
+}
+
+#wrapper #main_area {
+	
+	float: left;
+	width: 745px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-bottom-style: none;
+	border-left-style: solid;
+	border-top-color: #F3C0B4;
+	border-right-color: #F3C0B4;
+	border-bottom-color: #F3C0B4;
+	border-left-color: #F3C0B4;
+}
+#wrapper  #side_bar  .side_button {
+	color: #ffffff;
+	font-size: 14px;
+	height: auto;
+	border-bottom: 1px solid #ffffff;
+	background-color: #963117;
+	cursor: pointer;
+	width: 235px;
+	text-decoration: none;
+	font-weight: 700;
+	font-family: Arial, Helvetica, sans-serif;
+	padding-top: 7px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+}
+
+img{
+	border: 0px;
+}
+
+#wrapper .main-slider {
+	background-color: #ccc;
+	border-bottom: 4px solid #ffffff;
+
+	border-top: 4px solid #ffffff;
+	
+	height: 230px;
+	width: 1000px;
+	overflow: hidden;
+	
+}
+#wrapper .main-slider .slider-large-image {
+	float: left;
+	width: 1000px;
+	overflow: hidden;
+	margin-right: 3px;
+}
+#wrapper .main-slider .slider-large-image .large-image {
+	height: 230px;
+	width: 1000px;
+	overflow: hidden;
+}
+
+#wrapper .main-slider .slider-siderbar {
+	float: right;
+	width: 15px;
+	margin-top: 3px;
+	margin-right: 3px;
+	overflow:hidden;
+	clear: right;
+}
+#wrapper .main-slider .slider-siderbar div{
+	background: #555;
+	color: #ccc;
+	clear: right;
+	cursor:pointer;
+	margin-bottom: 3px;
+	text-align: center;
+}
+#wrapper #main_banner #new_side {
+	float: left;
+	width: 250px;
+	height: 100px;
+}
+
+a {
+	text-decoration: none;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+
+* {
+	margin: 0px;
+}
+#wrapper #main_banner #upper_buttons {
+	float: right;
+	height: 29px;
+	width: 750px;
+	background-color: #963117;
+	color: #FFFFFF;
+	vertical-align: middle;
+}
+#wrapper #main_banner #upper_buttons .upper_button {
+	float: left;
+	width: 140px;
+	text-align: center;
+	height: 26px;
+	font-weight: bold;
+	cursor: pointer;
+	vertical-align: baseline;
+	padding-top: 3px;
+}
+#wrapper #main_banner #upper_buttons .spacer {
+	float: left;
+}
+#wrapper #right_side {
+	clear: right;
+	float: right;
+	width: 150px;
+	border-top-style: none;
+	border-left-width: 1px;
+	border-left-style: none;
+	border-left-color: #F3C0B4;
+	border-top-width: 1px;
+	border-top-color: #F3C0B4;
+}
+#wrapper #right_side .right_button {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #963117;
+	text-align: center;
+	font-size: 14px;
+	font-weight: 700;
+	text-indent: 5px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #F3C0B4;
+	cursor: pointer;
+}
+#wrapper #main_area .post {
+	width: auto;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #F3C0B4;
+	padding-left: 5px;
+	color: #963117;
+	font-weight: bold;
+	text-align: justify;
+}
+#wrapper #main_area .post .title {
+	color : #336f6d;
+	font-weight: bold;
+	font-size: 25px;
+	cursor: pointer;
+	text-decoration: bold;
+}
+#wrapper #main_area .post .sub{
+	font-family:monospace;
+	color:#aaaaaa;
+	font-size:11px;
+}
+#wrapper #main_area .post .content{
+	font-size:17px;
+	color:#655a46;
+	clear:both;
+}
+#wrapper #main_area .post .title:hover {
+	font-weight: 900;
+	color: #076b17 ;
+	
+}
+#wrapper #footer {
+	padding: 20px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+#wrapper #main_area .post .back {
+	width: auto;
+	background-color: #963117;
+	color : #ffffff;
+}
+#wrapper #main_area .post .back1 {
+	width: auto;
+	background-color: #fae596;
+	color: #963117;
+}
+#wrapper #main_area .post .head{
+	background-color: #173e43;
+	color: #ffffff;
+}

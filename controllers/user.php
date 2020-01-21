@@ -1,0 +1,64 @@
+<?php
+
+class User extends Controller {
+
+	public function __construct() {
+		parent::__construct();
+		Session::init();
+		if (Session::get('loggedin')==false or !(Session::get('role')=="admin")){
+		    Session::destroy();
+		    header('location:'.URL.'login');
+		    exit;
+		}
+			
+	}
+	
+	public function index() 
+	{	
+		$this->view->userList = $this->model->userList();
+		$this->view->render('user/index');
+	}
+	public function editdel()
+	{
+	    $this->view->userList = $this->model->userList();
+	    $this->view->render('user/delete');
+	}
+	public function create() 
+	{
+		$data = array();
+		$data['login'] = $_POST['login'];
+		$data['password'] = md5($_POST['password']);
+		$data['role'] = $_POST['role'];
+		
+		// @TODO: Do your error checking!
+		
+		$this->model->create($data);
+		header('location: ' . URL . 'user');
+	}
+	
+	public function edit($id) 
+	{
+		$this->view->user = $this->model->userSingleList($id);
+		$this->view->render('user/edit');
+	}
+	
+	public function editSave($id)
+	{
+		$data = array();
+		$data['id'] = $id;
+		$data['login'] = $_POST['login'];
+		$data['password'] = md5($_POST['password']);
+		$data['role'] = $_POST['role'];
+		
+		// @TODO: Do your error checking!
+		
+		$this->model->editSave($data);
+		header('location: ' . URL . 'user');
+	}
+	
+	public function delete($id)
+	{
+		$this->model->delete($id);
+		header('location: ' . URL . 'user/editdel');
+	}
+}
