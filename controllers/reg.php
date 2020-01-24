@@ -445,14 +445,15 @@ class reg extends controller{
         public function pedit($addno){
             $this->loggedin("principal","clerk","admin");
             echo "<h1>Select Parent</h1>";
-            $result=$this->model->selectparent($addno);
-            echo "<h3>Parent id :".$result["id"]."</h3>";
-            
+            echo "<h3>Parent id : {$pid}</h3>";
+            $result=$this->model->selectpid($pid);
             echo "<div>";
             echo '<form action="'.URL.'reg/pedittrun" method="post" target="_top">';
            echo '<input type="hidden" name="addno" value="'.$addno.'">'; 
-           echo '<input type="hidden" name="pid" value="'.$result["id"].'">'; 
-           echo "<table><tr><td width=\"108\" height=\"24\">Father Name</td><td colspan=\"2\"><label>";
+           echo '<input type="hidden" name="pid" value="'.$pid.'">'; 
+
+	
+ echo "<table><tr><td width=\"108\" height=\"24\">Father Name</td><td colspan=\"2\"><label>";
       echo "<input name=\"fname\" type=\"text\" value=\"{$result["fnm"]}\" id=\"fnameint\" size=\"40\" maxlength=\"32\"></label></td></tr>";
     echo "<tr><td height=\"24\">Father's Occupation</td><td colspan=\"2\"><label>";
     echo $this->occupation("occ","occn",$result["focc"]); 
