@@ -32,12 +32,21 @@ if($this->ol_al==1){
 <td rowspan="6">
 <?php 
 //print_r($this->pic);
+if(isset($this->pic["data"])){
 	$image=imagecreatefromstring($this->pic["data"]);
 	ob_start();
 	imagejpeg($image,null,80);
 	$data=ob_get_contents();
 	ob_end_clean();
 	echo '<img src="data:image/jpg;base64,'.base64_encode($data).'" width="120px"  />';
+}
+else if($this->sex==1){
+    echo '<img src="'.URL.'views/search/male.jpg" width="120px"  />';
+}
+else{
+    echo '<img src="'.URL.'views/search/female.jpg" width="120px"  />';
+}
+
 	?>
 
 
