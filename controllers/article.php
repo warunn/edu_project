@@ -85,21 +85,10 @@ class article extends controller{
 			exit;
 		}
 	$this->model->run();	
-	}
 	
-	public function read($id,$edit=NULL){
-	    
-	    if($edit==TRUE){
-	        //print_r($_POST);
-	        //echo "hello";
-	        $id=$_POST["post_id"];
-	    }
-	    else if($id==null and !isset($_POST["post_id"])){
-	        //echo "hello";
-	        //print_r($_POST);
-	        header('location:'.URL);
-	    } 
-	  //echo $id;
+	
+	}
+	public function read($id){
 		$this->result1=$this->model->read1($id);
 		$this->view->msg=$this->result1;
 		$this->result3=$this->model->read4($this->result1["writer"]);
@@ -108,22 +97,13 @@ class article extends controller{
 		$this->view->msg1=$sth1;
 		$sth=$this->model->read3($id);
 		$this->view->msg2=$sth;
-		$this->view->post_id=$id;
 		//echo $this->result1;
 		$this->view->heading1=$this->model->read1($id);
 		$this->view->heading2=$this->model->read2($id);
 		$this->view->heading2=$this->view->heading2->fetch();
 		$this->view->heading3=$this->model->read3($id);
 		$this->view->heading3=$this->view->heading3->fetch();
-		$this->view->post_id=$id;
-		if (!empty($edit)){
-		    //print_r($this->view);
-		    $this->view->render("article/editme");
-		}
-		else {
-		    //print_r($this->view);
 		$this->view->render("article/read",true);
-		}
 		
 		}
 		
@@ -139,100 +119,105 @@ class article extends controller{
 		    $this->view->render("article/edit");
 		}
 		
-		public function editrun($postid=null){
-		    if (Session::get('loggedin')==false or !(Session::get('role')=="webadmin")){
-		        Session::destroy();
-		        header('location:'.URL.'login');
-		        exit;
+		/*
+		public function editrun($post_id=NULL){
+		    $this->loggedin("webadmin");
+		    if (isset($_POST["post_id"])){
+		        $post_id=$_POST["post_id"];
+		    }
+		    if(!empty($post_id)){
+		        $result=$this->model->read1($post_id);
+		        //print_r($result);
+		        foreach($result as $key=>$value)
+		        {
+		            //echo $value;
+		            $this->view->$key=$value;//very important
+		        }
+		        $result1=$this->model->read2($post_id);
+		        //print_r($result1);
+		        $ab=1;
+		        foreach ($result1 as $row){
+		            $this->view->{"paragraph".$ab}=$row["text"];//very important
+		            //print_r($this->view);
+		            $ab=$ab+1;
+		        }
 		        
-		    }
-		    if (empty($postid) and isset($_POST["post_id"])){
-		        $postid=$_POST["post_id"];
-		    }
-		    //echo $postid;
-		    //print_r($_POST);
-		    
-		        //$this->loggedin();
-		        $qid=$this->model->read1($qcode);
-		        //print_r($_POST);
-		        $qid=$qid["qid"];
-		        //print_r($_FILES);
-		        $e=1;
-		        while($e<=3){
-		            if(isset($_POST["question{$e}"]) and empty($_POST["qt{$e}"])){
-		                $this->model->deletetext("qtext",$qid,$e);
-		            }
-		            elseif(isset($_POST["question{$e}"]) and !empty($_POST["qt{$e}"])){
-		                $this->model->updateqt($qid,$e,$_POST["qt{$e}"]);
-		            }
-		            elseif(!isset($_POST["question{$e}"]) and !empty($_POST["qt{$e}"])){
-		                $this->model->insertqt($qid,$e,$_POST["qt{$e}"]);
+		        $result2=$this->model->read3($post_id);
+		        //print_r($result1);
+		        $ab=1;
+		        foreach ($result2 as $row){
+		            $this->view->{"pic".$ab}=$row["link"];//very important
+		            //print_r($this->view);
+		            $ab=$ab+1;
+		        }
+		        
+		        
+		        $result2=$this->model->selectsch($addno);
+		        $ab=1;
+		        foreach ($result2 as $row){
+		            $schname=$this->model->schname($row["schid"]);
+		            $this->view->{"sch".$ab}=$this->schools("school{$ab}","new{$ab}","schools",$ab,$row["schid"],$schname,$row["s_date"],$row["e_date"]);
+		            $ab=$ab+1;
+		        }
+		        $result3=$this->model->g5($addno);
+		        foreach($result3 as $key=>$value)
+		        {
+		            $this->view->$key=$value;
+		        }
+		        $this->view->subject6=$this->subjects(6,'R1');
+		        $this->view->subject7=$this->subjects(7,'C1');
+		        $this->view->subject8=$this->subjects(8,'C2');
+		        $this->view->subject9=$this->subjects(9,'C3');
+		        $this->view->olyear=$this->years("olyear");
+		        //print_r($result);
+		        $result6=$this->model->findbro($addno);
+		        $ab=1;
+		        foreach ($result6 as $row){
+		            $this->view->{"bro".$ab}=$row["bro1"];
+		            $ab=$ab+1;
+		        }
+		        if($result["ol_al"]==0){
+		            //echo "this is al";
+		            $result4=$this->model->selectol($addno);
+		            $this->view->exno=$result4["exno"];
+		            $this->view->olyear=$this->years("olyear",$result4["year"]);
+		            $result5=$this->model->selectolsub($result4["exno"]);
+		            $ab=1;
+		            foreach ($result5 as $row){
+		                //$this->view->{"olsub".$ab}=$row["subid"];
+		                $subid=$row["subid"];
+		                $this->view->{"res".$subid}=$row["Result"];
+		                $this->view->{"myres".$ab}=$row["Result"];
+		                $this->view->{"olsubid".$ab}=$row["subid"];
+		                $out=$this->model->select_subname($row["subid"]);
+		                $this->view->{"olsubname".$ab}=$out["subname"];
+		                $this->view->{"olsubtype".$ab}=$out["type"];
+		                $ab=$ab+1;
+		                if ($out["type"]=="R1"){
+		                    $this->view->subject6=$this->subjects(6,'R1',$row["subid"],$out["subname"],$row["Result"]);
+		                }
+		                if ($out["type"]=="C1"){
+		                    $this->view->subject7=$this->subjects(7,'C1',$row["subid"],$out["subname"],$row["Result"]);
+		                }
+		                if ($out["type"]=="C2"){
+		                    $this->view->subject8=$this->subjects(8,'C2',$row["subid"],$out["subname"],$row["Result"]);
+		                }
+		                if ($out["type"]=="C3"){
+		                    $this->view->subject9=$this->subjects(9,'C3',$row["subid"],$out["subname"],$row["Result"]);
+		                }
+		                
 		            }
 		            
-		            $e=$e+1;
-		        }
-		        $e=1;
-		        while($e<=7){
-		            if(isset($_POST["pic{$e}"]) and empty($_FILES["qp{$e}"]["name"]) and $_POST["pic{$e}"]=="1"){
-		                //echo "delete ".$e."<br/>";
-		                $this->model->deleteqp($qcode,$qid,$e);
-		            }
-		            elseif(isset($_POST["pic{$e}"]) and !empty($_FILES["qp{$e}"]["name"])){
-		                //echo "update ".$e."<br/>";
-		                $this->model->updateqp($qcode,$qid,$e);
-		            }
-		            elseif(!isset($_POST["pic{$e}"]) and !empty($_FILES["qp{$e}"]["name"])){
-		                //echo "insert ".$e."<br/>";
-		                //print_r($_FILES);
-		                $this->model->insertqp($qcode,$qid,$e);
-		            }
-		            $e=$e+1;
-		        }
-		        
-		        
-		        $e=1;
-		        while($e<=3){
-		            if(isset($_POST["question{$e}"]) and empty($_POST["qt{$e}"])){
-		                $this->model->deletetext("qtext",$qid,$e);
-		            }
-		            elseif(isset($_POST["question{$e}"]) and !empty($_POST["qt{$e}"])){
-		                $this->model->updateqt($qid,$e,$_POST["qt{$e}"]);
-		            }
-		            elseif(!isset($_POST["question{$e}"]) and !empty($_POST["qt{$e}"])){
-		                $this->model->insertqt($qid,$e,$_POST["qt{$e}"]);
-		            }
 		            
-		            $e=$e+1;
 		        }
-		        
-		        
-		        $e=1;
-		        while($e<=5){
-		            if(isset($_POST["option{$e}"]) and empty($_POST["op{$e}"])){
-		                $this->model->deleteop($qid,$e);
-		            }
-		            elseif(isset($_POST["option{$e}"]) and !empty($_POST["op{$e}"])){
-		                $this->model->updateop($qid,$e,$_POST["op{$e}"]);
-		            }
-		            elseif(!isset($_POST["option{$e}"]) and !empty($_POST["op{$e}"])){
-		                $this->model->insertop($qid,$e,$_POST["op{$e}"]);
-		            }
-		            $e=$e+1;
-		        }
-		        $e=1;
-		        while($e<=5){
-		            if(isset($_POST["ans{$e}"])){
-		                $this->model->updateans($qid,$e,true);
-		            }
-		            else{
-		                $this->model->updateans($qid,$e,false);
-		            }
-		            $e=$e+1;
-		        }
-		        $this->preview($qcode);
+		        $this->view->g5years=$this->years("g5year",$this->view->year);
+		        $this->view->render("article/editme");
+		    }
+		    else {
+		        echo "<h1>Admission Number Not Defined</h1>";
+		    }
 		    
 		    
-		    
-		} 
+		}*/
 }
 ?>

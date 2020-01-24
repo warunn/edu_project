@@ -120,16 +120,6 @@ public function delete($aid){
         $sth=$this->db->prepare("select * from article where post_id=:id");
         $sth->execute(array(':id'=>$id));
         $result=$sth->fetch();
-
-        try {
-
-            $query1 = "insert into post_counts(post_id) values('{$id}')";
-            $sth=$this->db->prepare($query1);
-            $sth->execute();
-        } catch (Exception $e) {
-            print_r($e);
-        }
-
         return $result;
         
     }

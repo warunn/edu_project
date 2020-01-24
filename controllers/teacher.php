@@ -91,7 +91,6 @@ class teacher extends controller{
             if(empty($tid)){
                 $this->view->error=" Teacher ID is empty please Check the ID again";
             }
-            //call the model---
             $result=$this->model->showtid($tid);
             if(!empty($result)){
                 foreach($result as $key=>$value){
@@ -100,7 +99,7 @@ class teacher extends controller{
                 $this->view->render("teacher/report");
             }
             else {
-                    $this->view->error="Invalid Teacher ID please Check the ID again";
+                $this->view->error="Invalid Teacher ID please Check the ID again";
             }
         }
         

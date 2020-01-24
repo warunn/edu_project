@@ -24,6 +24,7 @@ class dashboard extends controller{
 	    }
 	    $this->view->render('dashboard/webadmin');
 	}
+
 	public function teacher(){
 	    Session::init();
 	    if (Session::get('loggedin')==false or Session::get('role')!="teacher"){

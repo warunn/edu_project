@@ -2,8 +2,6 @@
 
 class View {
 	public $msg;
-	public $array = array();
-	public $api = array();
 	function __construct() {
 		//echo 'this is the view';
 	}
