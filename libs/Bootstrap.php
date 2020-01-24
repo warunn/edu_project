@@ -16,16 +16,16 @@ class Bootstrap {
 			$controller->index();
 			return false;
 		}
-
+//check the controller
 		$file = 'controllers/' . $url[0] . '.php';
 		if (file_exists($file)) {
-			require $file;
+			require $file;//load the controller
 		} else {
 			$this->error();
 		}
 		
-		$controller = new $url[0];
-		$controller->loadModel($url[0]);
+		$controller = new $url[0];//make controller array
+		$controller->loadModel($url[0]);//name new model (DB connection)--------
 
 		// this is the edit begin
 		if (isset($url[3])){
