@@ -85,10 +85,21 @@ class article extends controller{
 			exit;
 		}
 	$this->model->run();	
-	
-	
 	}
-	public function read($id){
+	
+	public function read($id,$edit=NULL){
+	    
+	    if($edit==TRUE){
+	        //print_r($_POST);
+	        //echo "hello";
+	        $id=$_POST["post_id"];
+	    }
+	    else if($id==null and !isset($_POST["post_id"])){
+	        //echo "hello";
+	        //print_r($_POST);
+	        header('location:'.URL);
+	    } 
+	  //echo $id;
 		$this->result1=$this->model->read1($id);
 		$this->view->msg=$this->result1;
 		$this->result3=$this->model->read4($this->result1["writer"]);
@@ -97,13 +108,22 @@ class article extends controller{
 		$this->view->msg1=$sth1;
 		$sth=$this->model->read3($id);
 		$this->view->msg2=$sth;
+		$this->view->post_id=$id;
 		//echo $this->result1;
 		$this->view->heading1=$this->model->read1($id);
 		$this->view->heading2=$this->model->read2($id);
 		$this->view->heading2=$this->view->heading2->fetch();
 		$this->view->heading3=$this->model->read3($id);
 		$this->view->heading3=$this->view->heading3->fetch();
+		$this->view->post_id=$id;
+		if (!empty($edit)){
+		    //print_r($this->view);
+		    $this->view->render("article/editme");
+		}
+		else {
+		    //print_r($this->view);
 		$this->view->render("article/read",true);
+		}
 		
 		}
 		
@@ -126,18 +146,93 @@ class article extends controller{
 		        exit;
 		        
 		    }
-		    if (null($postid) and isset($_POST["post_id"])){
+		    if (empty($postid) and isset($_POST["post_id"])){
 		        $postid=$_POST["post_id"];
 		    }
-		    $result1=$this->model->read1($postid);
-		    $this->view->result1=$result1;
-		    $result2=$this->model->read2($postid);
-		    $this->view->result2=$result2;
-		    $result3=$this->model->read3($postid);
-		    $this->view->result3=$result3;
-		    $this->view->aid=$postid;
-		    $this->view->render("article/edit");
+		    //echo $postid;
+		    //print_r($_POST);
 		    
-		}
+		        //$this->loggedin();
+		        $qid=$this->model->read1($qcode);
+		        //print_r($_POST);
+		        $qid=$qid["qid"];
+		        //print_r($_FILES);
+		        $e=1;
+		        while($e<=3){
+		            if(isset($_POST["question{$e}"]) and empty($_POST["qt{$e}"])){
+		                $this->model->deletetext("qtext",$qid,$e);
+		            }
+		            elseif(isset($_POST["question{$e}"]) and !empty($_POST["qt{$e}"])){
+		                $this->model->updateqt($qid,$e,$_POST["qt{$e}"]);
+		            }
+		            elseif(!isset($_POST["question{$e}"]) and !empty($_POST["qt{$e}"])){
+		                $this->model->insertqt($qid,$e,$_POST["qt{$e}"]);
+		            }
+		            
+		            $e=$e+1;
+		        }
+		        $e=1;
+		        while($e<=7){
+		            if(isset($_POST["pic{$e}"]) and empty($_FILES["qp{$e}"]["name"]) and $_POST["pic{$e}"]=="1"){
+		                //echo "delete ".$e."<br/>";
+		                $this->model->deleteqp($qcode,$qid,$e);
+		            }
+		            elseif(isset($_POST["pic{$e}"]) and !empty($_FILES["qp{$e}"]["name"])){
+		                //echo "update ".$e."<br/>";
+		                $this->model->updateqp($qcode,$qid,$e);
+		            }
+		            elseif(!isset($_POST["pic{$e}"]) and !empty($_FILES["qp{$e}"]["name"])){
+		                //echo "insert ".$e."<br/>";
+		                //print_r($_FILES);
+		                $this->model->insertqp($qcode,$qid,$e);
+		            }
+		            $e=$e+1;
+		        }
+		        
+		        
+		        $e=1;
+		        while($e<=3){
+		            if(isset($_POST["question{$e}"]) and empty($_POST["qt{$e}"])){
+		                $this->model->deletetext("qtext",$qid,$e);
+		            }
+		            elseif(isset($_POST["question{$e}"]) and !empty($_POST["qt{$e}"])){
+		                $this->model->updateqt($qid,$e,$_POST["qt{$e}"]);
+		            }
+		            elseif(!isset($_POST["question{$e}"]) and !empty($_POST["qt{$e}"])){
+		                $this->model->insertqt($qid,$e,$_POST["qt{$e}"]);
+		            }
+		            
+		            $e=$e+1;
+		        }
+		        
+		        
+		        $e=1;
+		        while($e<=5){
+		            if(isset($_POST["option{$e}"]) and empty($_POST["op{$e}"])){
+		                $this->model->deleteop($qid,$e);
+		            }
+		            elseif(isset($_POST["option{$e}"]) and !empty($_POST["op{$e}"])){
+		                $this->model->updateop($qid,$e,$_POST["op{$e}"]);
+		            }
+		            elseif(!isset($_POST["option{$e}"]) and !empty($_POST["op{$e}"])){
+		                $this->model->insertop($qid,$e,$_POST["op{$e}"]);
+		            }
+		            $e=$e+1;
+		        }
+		        $e=1;
+		        while($e<=5){
+		            if(isset($_POST["ans{$e}"])){
+		                $this->model->updateans($qid,$e,true);
+		            }
+		            else{
+		                $this->model->updateans($qid,$e,false);
+		            }
+		            $e=$e+1;
+		        }
+		        $this->preview($qcode);
+		    
+		    
+		    
+		} 
 }
 ?>
