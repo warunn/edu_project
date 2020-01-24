@@ -13,13 +13,14 @@ if($this->ol_al==1){
     <h1>Edit Student</h1>
     
 <form action="<?php echo URL;?>reg/steditrun" method="post">
- <input type="hidden" name="aid" value="<?php echo $this->aid;?>">
+ <input type="hidden" name="pid" value="<?php echo $this->pid;?>">
+  <input type="hidden" name="haddno" value="<?php echo $this->addno;?>">
+  <input type="hidden" name="hol_al" value="<?php echo $this->ol_al;?>">
+  <input type="hidden" name="holno" value="<?php echo $this->exno;?>">
     <table border="0">
-    <tr><td>Topic </td><td><input type="text" name="topic" value="<?php echo $this->topic;?>" required></td></tr>
     <tr>
-    <td>paragraph1 </td><td><textarea name="p1"  required><?php echo $this->addno;?>"</textarea></td></tr>
-    
-    
+    <td rowspan="6"></td><td>Admission No</td><td><input type="text" name="addno" value="<?php echo $this->addno;?>" required></td></tr>
+    <tr><td>Admission Date</td><td><input type="text" name="addate" value="<?php echo $this->addate;?>" required></td></tr>
     <tr><td>OL/AL</td><?php echo "<td><label>O/L 
         <input type=\"radio\" name=\"ol\" id=\"ol\" value=\"1\" ";
         if($this->ol_al==1){echo "checked=\"checked\"";}
