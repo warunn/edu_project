@@ -1,3 +1,12 @@
+<script type="text/javascript">
+ <?php
+ $this->final=Session::get("artedit");
+		 if(isset($this->final)): ?>
+ alert("Article Edited Successfully");
+ <?php
+ Session::delete("artedit");
+ endif;?>
+</script>
 <div id="main_area">
     <div class="post">
         <table>

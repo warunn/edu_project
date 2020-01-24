@@ -177,7 +177,7 @@ public function delete($aid){
         $sth->execute(array(':uname'=>$writer,
             ':writerno'=>$writerno))or die(print_r($sth->errorInfo(), true));
     }
-    public function updatep($post_id,$pid,$p){
+    public function updatepic($post_id,$pid,$p){
         ${"temp".$p}=$_FILES["npic{$p}"]["tmp_name"];
         //echo ${"temp".$p};
         if (!empty(${"temp".$p})){
@@ -186,15 +186,17 @@ public function delete($aid){
             ${"fsize".$p}=$_FILES["npic{$p}"]["size"];
             $temp=explode(".", ${"fname".$p});
             $ext = end($temp);
+            
             if (!file_exists($dirpath)) {
                 mkdir($dirpath,0777,true);
             }
             $filepath=$dirpath."/".$p.".".$ext;
+            //echo $filepath;
             move_uploaded_file(${"temp".$p},$filepath);
         }
     }
     
-    public function insertp($post_id,$pid,$p){
+    public function insertpic($post_id,$pid,$p){
         //echo "hello";
         //echo $qcode." ".$qid." ".$p;
         
@@ -202,7 +204,7 @@ public function delete($aid){
         //echo $_FILES["qp{$p}"]["name"];
         //echo ${"temp".$p};
         //if (!empty(${"temp".$p})){
-        $dirpath="i462/".$qcode;
+        $dirpath="pic/".$qcode;
         ${"fname".$p}=$_FILES["npic{$p}"]["name"];
         ${"fsize".$p}=$_FILES["npic{$p}"]["size"];
         $temp=explode(".", ${"fname".$p});
@@ -221,27 +223,33 @@ public function delete($aid){
             ':size'=>${"fsize".$p}));
         //}
     }
-    public function deletep($post_id,$pid,$p){
+    public function deletepic($post_id,$pid,$p){
+       // echo $post_id;
+        $dirpath="pic/".$post_id;
+        $sth=$this->db->prepare("select * from pics where post_id=:post_id and id=:pid");
         
-        $dirpath="i462/".$qcode;
-        $sth=$this->db->prepare("select * from pics where post_id=:post_id and pid=:pid");
         $sth->execute(array(':post_id'=>$post_id,
-            ':pid'=>$pid));
+            ':pid'=>$pid))or die(print_r($sth->errorInfo(), true));;
         $tresult=$sth->fetch();
-        $pic=$tresult["pic"];
-        $file=$dirpath."/".$pic;
+        //print_r($tresult);
+        $pic=$tresult["link"];
+        $file=$pic;
         //fclose($file);
+        //echo $file;
+        if(file_exists($file)){
+            chmod($file,0777);
+        }
         if(!unlink($file)){
             // echo "error";
         }
         else{
             // echo "done";
         }
-        $sth=$this->db->prepare("delete from pics where qid=:qid and picno=:picno");
-        $sth->execute(array(':qid'=>$qid,
-            ':picno'=>$p))or die(print_r($sth->errorInfo(), true));
+        $sth=$this->db->prepare("delete from pics where post_id=:post_id and id=:id");
+        $sth->execute(array(':post_id'=>$post_id,
+           ':id'=>$p))or die(print_r($sth->errorInfo(), true));
         
-    }
+    } 
     
 }
 ?>

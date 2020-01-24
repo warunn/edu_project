@@ -176,42 +176,34 @@ class article extends controller{
 		            
 		            $e=$e+1;
 		        }
+		       // print_r($_FILES);
+		        
 		        $e=1;
 		        while($e<=15){
-		            if(isset($_POST["pic{$e}"]) and empty($_FILES["npic{$e}"]["name"]) and $_POST["pi{$e}"]=="1" and $e>3){
+		            //echo $_FILES["npic{$e}"];
+		            if(isset($_POST["pic{$e}"]) and empty($_FILES["npic{$e}"]) and $_POST["pi{$e}"]=="1" and $e>3){
 		                //echo "delete ".$e."<br/>";
-		                $this->model->deletep($post_id,$_POST["pic{$e}"],$e);
+		                $this->model->deletepic($postid,$_POST["pic{$e}"],$e);
 		            }
-		            elseif(isset($_POST["pic{$e}"]) and !empty($_FILES["npic{$e}"]["name"])){
+		            elseif(isset($_POST["pic{$e}"]) and !empty($_FILES["npic{$e}"])){
 		                //echo "update ".$e."<br/>";
-		                $this->model->updatep($post_id,$_POST["pic{$e}"],$e);
+		                $this->model->updatepic($postid,$_POST["pic{$e}"],$e);
 		            }
-		            elseif(!isset($_POST["pic{$e}"]) and !empty($_FILES["npic{$e}"]["name"])){
+		            elseif(!isset($_POST["pic{$e}"]) and !empty($_FILES["npic{$e}"])){
 		                //echo "insert ".$e."<br/>";
 		                //print_r($_FILES);
-		                $this->model->insertp($post_id,$_POST["pic{$e}"],$e);
+		                $this->model->insertpic($postid,$_POST["pic{$e}"],$e);
 		            }
 		            $e=$e+1;
 		        }
 		        
 		        
-		      
+		        Session::init();
+		        Session::set("artedit",TRUE);
+		        header("Location: ".URL."article/edit");
+		     
 		        
-		        $e=1;
-		        while($e<=5){
-		            if(isset($_POST["option{$e}"]) and empty($_POST["op{$e}"])){
-		                $this->model->deleteop($qid,$e);
-		            }
-		            elseif(isset($_POST["option{$e}"]) and !empty($_POST["op{$e}"])){
-		                $this->model->updateop($qid,$e,$_POST["op{$e}"]);
-		            }
-		            elseif(!isset($_POST["option{$e}"]) and !empty($_POST["op{$e}"])){
-		                $this->model->insertop($qid,$e,$_POST["op{$e}"]);
-		            }
-		            $e=$e+1;
-		        }
-		        
-		        $this->preview($qcode);
+		        //$this->preview($qcode);
 		    
 		    
 		    

@@ -3,7 +3,7 @@
     <?php //print_r($this);?>
     <h1>Edit Article</h1>
     <?php //print_r($this); ?>
-<form action="<?php echo URL;?>article/editrun" method="post">
+<form action="<?php echo URL;?>article/editrun" method="post" enctype="multipart/form-data">
  <input type="hidden" name="post_id" value="<?php echo $this->post_id;?>">
     <table border="0">
     <tr><td>Topic </td><td><input type="text" name="topic" size="70" value="<?php echo $this->msg["topic"];?>" required></td></tr>
