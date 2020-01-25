@@ -1,6 +1,6 @@
 <div id="main_area">
     <div class="post">
-        <?php $result = $this->array?>
+        <?php $result = $this->array ?>
         <table>
             <tr>
                 <td>

@@ -69,8 +69,8 @@ class allstudentclass_model extends model
     {
         try {
             $currentYear = date('Y');
-            $query = "INSERT INTO setteachers (	teacher_id, class, batch , current_year) VALUES('{$teacherID}','{$class}','{$batch}','{$currentYear}') ON DUPLICATE KEY UPDATE teacher_id='{$teacherID}', class='{$class}',batch='{$batch}',current_year='{$currentYear}'";
-            //$query = "INSERT INTO setclasses (batch, class, created_year,std_ID) VALUES('{$batch}','{$class}','{$created_year}','{$std_ID}')";
+            //$query = "INSERT INTO setteachers (	teacher_id, class, batch , current_year) VALUES('{$teacherID}','{$class}','{$batch}','{$currentYear}') ON DUPLICATE KEY UPDATE teacher_id='{$teacherID}', class='{$class}',batch='{$batch}',current_year='{$currentYear}'";
+            $query = "INSERT INTO setteachers (	teacher_id, class, batch , current_year) VALUES('{$teacherID}','{$class}','{$batch}','{$currentYear}')";
             $sth = $this->db->prepare($query);
             $sth->execute();
         } catch (Exception $e) {

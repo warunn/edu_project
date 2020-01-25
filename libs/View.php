@@ -3,7 +3,7 @@
 class View {
 	public $msg;
 	public $array = array();
-	public $api = array();
+	public $array2 = array();
 	function __construct() {
 		//echo 'this is the view';
 	}
