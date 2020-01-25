@@ -35,7 +35,8 @@ class reg extends controller{
             $this->loggedin("principal","clerk","admin");
             //print_r($_POST);
             $addy= isset($_POST["addy"])?$_POST["addy"]:null;
-            
+
+            $batch = $_POST["batch"];
             
             $addm= $_POST["addm"];
             $addd= $_POST["addd"];
@@ -92,7 +93,7 @@ class reg extends controller{
                 
                 try{
                     $this->model->db->beginTransaction();
-                    $this->model->student($addno,$addate,$nameint,$fullname,$dob,$ol,$mf,$address,$nic,$town);
+                    $this->model->student($addno,$addate,$nameint,$fullname,$dob,$ol,$mf,$address,$nic,$town,$batch);
                     $this->model->grade5($addno,$g5ex,$g5year,$g5marks);
                     $pq=1;
                     while($pq<=3){
@@ -340,7 +341,7 @@ class reg extends controller{
             
             $this->model->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->model->db->setAttribute(PDO::ATTR_AUTOCOMMIT,0);
-            
+            //this is update batch
             try{
                 $this->model->db->beginTransaction();
                $this->model->updatestudent($haddno,$addno,$addate,$nameint,$fullname,$dob,$ol,$mf,$address,$nic,$pid,$town);

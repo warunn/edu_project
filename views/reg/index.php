@@ -10,7 +10,7 @@ display:none;
 </style>
 <div id="main_area">
     <div class="post">
-<h1>Central College Piliyandala</h1>
+<h1 style="text-align: center">Central College Piliyandala</h1>
 <form action="<?php echo URL;?>reg/run" method="post">
   <table>
     <tr>
@@ -78,6 +78,24 @@ display:none;
       <input type="radio" name="mf" id="female" value="0">
       </label></td>
     </tr>
+      <tr>
+          <td>
+            <label for="exampleFormControlSelect1">Batch</label>
+          </td>
+          <td>
+          <select id="exampleFormControlSelect1" name="batch" required>
+              <option value="" selected disabled> Select a Batch</option>
+              <option value="<?php echo (date('Y')-0)?>">Grade 6</option>
+              <option value="<?php echo (date('Y')-1)?>">Grade 7</option>
+              <option value="<?php echo (date('Y')-2)?>">Grade 8</option>
+              <option value="<?php echo (date('Y')-3)?>">Grade 9</option>
+              <option value="<?php echo (date('Y')-4)?>">Grade 10</option>
+              <option value="<?php echo (date('Y')-5)?>">Grade 11</option>
+              <option value="<?php echo (date('Y')-6)?>">Grade 12</option>
+              <option value="<?php echo (date('Y')-7)?>">Grade 13</option>
+          </select>
+          </td>
+      </tr>
     <tr>
       <td height="19">Address</td>
       <td colspan="2"><label>
@@ -304,8 +322,8 @@ function col_form(){
     <tr>
       <td height="27">&nbsp;</td>
       <td colspan="2"><label>
-        <input type="submit" name="submit" id="submit" value="Submit">
-        <input type="reset" name="reset" id="reset" value="reset">
+        <input type="submit" name="submit" id="submit" value="Submit" style="margin-right: 10px">
+        <input type="reset" name="reset" id="reset" value="reset"
       </label></td>
     </tr>
   </table>

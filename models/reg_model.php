@@ -182,9 +182,9 @@ class reg_model extends model{
         $final=$sth->fetch();
         return $final;
     }
-    public function student($addno,$adays,$nameint,$fullname,$dob,$ol,$mf,$address,$nic,$town){
-        $query="insert into student(stid,addate,nameint,fname,dob,ol_al,sex,address,nic,town)
-	values({$addno},'{$adays}','{$nameint}','{$fullname}','{$dob}',{$ol},{$mf},'{$address}','{$nic}','{$town}')";
+    public function student($addno,$adays,$nameint,$fullname,$dob,$ol,$mf,$address,$nic,$town,$batch){
+        $query="insert into student(stid,addate,nameint,fname,dob,ol_al,sex,address,nic,town,batch)
+	values({$addno},'{$adays}','{$nameint}','{$fullname}','{$dob}',{$ol},{$mf},'{$address}','{$nic}','{$town}','{$batch}')";
         $sth=$this->db->prepare($query);
         $sth->execute() or die(print_r($sth->errorInfo(), true));
     }
