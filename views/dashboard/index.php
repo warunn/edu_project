@@ -1,8 +1,8 @@
 <?php //new edit ?>
 <div id="main_area">
-    <div class="post" style="height: 500px">
+    <div class="post" style="height: 800px">
         <h1 align="center">Admin Main Control Panel</h1>
-        <table>
+        <table >
             <tr>
                 <td>
                     <div style="width: 200px;float:left">
@@ -212,6 +212,28 @@
                 </td>
 
             </tr>
+
+            <tr>
+                <td>
+
+                    <div style="width: 200px;float:left">
+
+                        <div id="setting2" style="text-align:left">
+                            <div align="center"><a href="<?php echo URL; ?>allstudentclass/index"><img
+                                            src="<?php echo URL; ?>views/dashboard/includes/teacher.gif" alt=""
+                                            width="70" align="middle"/></a></div>
+                        </div>
+                        <div style="margin-bottom: 100px!important;">
+                            <div align="center"><a href="<?php echo URL; ?>allstudentclass/index">Manage Classes</a></div>
+                        </div>
+                    </div>
+
+
+                </td>
+
+            </tr>
+
+
         </table>
 
     </div>

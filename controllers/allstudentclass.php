@@ -40,5 +40,21 @@ class allstudentclass extends Controller
         }
 
     }
+    public function getClassStudent()
+    {
+
+        if(isset($_POST['submit-search']))
+        {
+            $result = $this->model->getClassStudent($_POST['batch'],$_POST['class']);
+            if (true)
+            {
+                $this->view->array = $result;
+                $this->view->render("allstudentclass/viewmore");
+            }
+        }
+
+
+
+    }
 
 }

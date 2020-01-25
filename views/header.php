@@ -53,7 +53,46 @@
 </head>
 
 <body>
+<?php
 
+$Student_classes = array();
+
+function HeadergetGradeFromYear($year)
+{
+    $temp="";
+    switch ($year) {
+        case (date('Y') - 0):
+            return $temp = 'Grade 6';
+
+        case (date('Y') - 1):
+            return $temp = 'Grade 7';
+
+        case (date('Y') - 2):
+            return $temp = 'Grade 8';
+
+        case (date('Y') - 3):
+            return $temp = 'Grade 9';
+
+        case (date('Y') - 4):
+            return $temp = 'Grade 10';
+
+        case (date('Y') - 5):
+            return $temp = 'Grade 11';
+
+        case (date('Y') - 6):
+            return $temp = 'Grade 12';
+
+        case (date('Y') - 7):
+            return $temp = 'Grade 13';
+
+        default:
+            return $temp = 'NO GRADES';
+
+    }
+}
+
+$Student_classes=['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P'];
+?>
 <div id="wrapper">
     <div id="main_banner"><a href="<?php echo URL; ?>index"><img src="<?php echo URL; ?>views/index/img/new_side.jpg"
                                                                  name="new_side" id="new_side"/></a><img id="new_up"
