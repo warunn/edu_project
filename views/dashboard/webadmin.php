@@ -31,7 +31,7 @@
 </td></tr><tr>
 <td>
 <div style="width: 200px;float:left"><div id="setting">
-  <div align="center"><a href="<?php echo URL; ?>article/scomment"><img src="<?php echo URL; ?>views/dashboard/includes/delete.gif" width="70" align="middle"></a></div>
+  <div align="center"><a href="<?php echo URL; ?>article/scomment"><img src="<?php echo URL; ?>views/dashboard/includes/comments.gif" width="70" align="middle"></a></div>
 </div>
   <div>
     <div align="center"><a href="<?php echo URL; ?>article/scomment"> Publish Comment</a></div>
