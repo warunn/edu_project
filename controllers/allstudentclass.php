@@ -14,8 +14,13 @@ class allstudentclass extends Controller
 
     public function index(){
         //$this->loggedin();
+        $result = $this->model->loadAllTeachers();
+        if (!empty($result))
+        {
+            $this->view->array = $result;
+            $this->view->render("allstudentclass/index");
+        }
 
-        $this->view->render("allstudentclass/index");
 
     }
 
@@ -40,6 +45,23 @@ class allstudentclass extends Controller
         }
 
     }
+
+    public function setTeachers(){
+        if(isset($_POST['submit-teacher']))
+        {
+
+            $this->model->setTeachers($_POST['teacher'],$_POST['class'],$_POST['batch']);
+            if (true)
+            {
+                $this->view->msg = true;
+                $this->view->render("allstudentclass/index");
+            }
+        }
+
+    }
+
+
+
     public function getClassStudent()
     {
 
