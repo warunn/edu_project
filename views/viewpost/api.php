@@ -1,6 +1,7 @@
 <?php
 //$result = $this->array);
-print(json_encode($result = $this->api));
+print_r(md5("82e0b633e74221d0d7d986f272036b55"));
+
 
 
 
