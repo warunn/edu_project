@@ -37,7 +37,26 @@
     <div align="center"><a href="<?php echo URL; ?>article/scomment"> Publish Comment</a></div>
   </div>
 </div>
-</td></tr></table>
+</td>
+<td>
+
+                    <div style="width: 200px;float:left">
+
+                            <div id="setting2" style="text-align:left">
+                                <div align="center"><a href="<?php echo URL; ?>viewpost/index"><img
+                                                src="<?php echo URL; ?>views/dashboard/includes/post.gif" alt=""
+                                                width="70" align="middle"/></a></div>
+                            </div>
+                            <div>
+                                <div align="center"><a href="<?php echo URL; ?>viewpost/index">View Statistics</a></div>
+                            </div>
+
+                    </div>
+
+
+                </td>
+
+</tr></table>
 
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 </div>

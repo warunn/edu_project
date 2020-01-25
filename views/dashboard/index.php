@@ -175,23 +175,7 @@
 
 
                 </td>
-                <td>
-
-                    <div style="width: 200px;float:left">
-
-                            <div id="setting2" style="text-align:left">
-                                <div align="center"><a href="<?php echo URL; ?>viewpost/index"><img
-                                                src="<?php echo URL; ?>views/dashboard/includes/teacher.gif" alt=""
-                                                width="70" align="middle"/></a></div>
-                            </div>
-                            <div>
-                                <div align="center"><a href="<?php echo URL; ?>user/editdel">View Statistics</a></div>
-                            </div>
-
-                    </div>
-
-
-                </td>
+                
             </tr>
         </table>
 
