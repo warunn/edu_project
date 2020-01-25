@@ -1,5 +1,14 @@
 <div id="main_area">
     <div class="post">
+        <style>
+            table {
+                border-collapse: collapse;
+            }
+
+            table, th, td {
+                border: 1px solid black;
+            }
+        </style>
         <?php $result = $this->array; ?>
         <div class="container-fluid" style="margin-top: 5px">
             <div class="row">
@@ -22,18 +31,18 @@
         <table class="table table-sm table-bordered">
             <thead>
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Full Name</th>
-                <th scope="col">Address</th>
+                <th style="padding: 10px">ID</th>
+                <th style="padding: 10px">Full Name</th>
+                <th style="padding: 10px">Address</th>
             </tr>
             </thead>
             <tbody>
             <?php foreach ($result as $key => $value) {
                 ?>
                 <tr>
-                    <td><?php echo $value[0] ?></td>
-                    <td><?php echo $value[1] ?></td>
-                    <td><?php echo $value[2] ?></td>
+                    <td style="padding: 10px"><?php echo $value[0] ?></td>
+                    <td style="padding: 10px"><?php echo $value[1] ?></td>
+                    <td style="padding: 10px"><?php echo $value[2] ?></td>
 
                 </tr>
             <?php } ?>

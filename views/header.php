@@ -25,11 +25,9 @@
     <!-- Schema -->
 
     <link rel="icon" href="<?php echo URL; ?>views/index/img/favicon.ico">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="<?php echo URL; ?>public/js/jquery-1.8.3.js" type="text/javascript"></script>
     <script src="<?php echo URL; ?>public/js/slider.js" type="text/javascript"></script>
     <script src="<?php echo URL; ?>public/js/jspdf.min.js" type="text/javascript"></script>
