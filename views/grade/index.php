@@ -76,7 +76,7 @@
                 var firstPoint = activePoints[0];
                 var label = myChart.data.labels[firstPoint._index];
                 var value = myChart.data.datasets[firstPoint._datasetIndex].data[firstPoint._index];
-                window.open('http://localhost/edu_project/grade/viewmore?lable='+label);
+                window.open('<?php echo URL;?>/grade/viewmore?lable='+label);
             };
         </script>
 

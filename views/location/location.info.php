@@ -32,8 +32,8 @@
                 ?>
                 <tr>
                     <td><?php echo $value[0] ?></td>
-                    <td><?php echo $value[1] ?></th>
-                    <td><?php echo $value[2] ?></th>
+                    <td><?php echo $value[1] ?></td>
+                    <td><?php echo $value[2] ?></td>
 
                 </tr>
             <?php } ?>
