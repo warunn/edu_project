@@ -34,6 +34,19 @@ class Studentmarks extends controller{
         $this->view->render("marks/index");
     }
 
+    public function selectAllFromMarks()
+    {
+        $result=$this->model->selectAllFromMarks();
+        if(!empty($result)){
+            $this->view->array = $result;
+            header("Cache-Control: no cache");
+            $this->view->render("studentmarks/reports");
+        }
+        else {
+            $this->view->error="Server Error";
+        }
+    }
+
 
 }
 

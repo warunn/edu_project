@@ -17,6 +17,19 @@ class studentmarks_model extends model{
             $sth = $this->db->prepare("INSERT INTO `marks`(`std_id`, `subjects`, `term`, `marks`, `batch`, `class`, `Created_year`)
                 VALUES ('{$std_id}','{$subjects}','{$term}','{$marks}','{$batch}','{$class}','{$Created_year}')");
             $sth->execute();
+
+        } catch (Exception $e) {
+        }
+
+    }
+
+
+    public function selectAllFromMarks()
+    {
+        try {
+            $sth = $this->db->prepare("SELECT * FROM `marks`");
+            $sth->execute();
+            return $sth->fetchAll();
         } catch (Exception $e) {
         }
 
