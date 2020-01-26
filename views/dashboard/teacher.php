@@ -15,6 +15,16 @@
       </div>
     </div>
   </td>
+        <td>
+            <div style="width: 200px;float:left">
+                <div id="setting2">
+                    <div align="center"><a href="<?php echo URL; ?>studentmarks/selectAllFromMarks"><img src="<?php echo URL; ?>views/dashboard/includes/teacher.gif" alt="" width="70" align="middle" /></a></div>
+                </div>
+                <div>
+                    <div align="center"><a href="<?php echo URL; ?>studentmarks/selectAllFromMarks">View Marks</a></div>
+                </div>
+            </div>
+        </td>
 
 
 
