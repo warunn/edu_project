@@ -2,7 +2,7 @@
 <div id="main_area">
     <div class="post" style="height: 800px">
         <h1 align="center">Admin Main Control Panel</h1>
-        <table >
+        <table border="0" >
             <tr>
                 <td>
                     <div style="width: 200px;float:left">
@@ -42,16 +42,19 @@
             </tr>
             <tr>
                 <td>
-                    <div style="width: 200px;float:left;">
-                        <div id="setting">
-                            <div align="center"><a href="<?php echo URL; ?>reg/newparent"><img
-                                            src="<?php echo URL; ?>views/dashboard/includes/delete.gif" width="70"
-                                            align="middle"></a></div>
+               
+                    <div style="width: 200px;float:right">
+
+                        <div id="setting2" style="text-align:left">
+                            <div align="center"><a href="<?php echo URL; ?>allstudentclass/index"><img
+                                            src="<?php echo URL; ?>views/dashboard/includes/teacher.gif" alt=""
+                                            width="70" align="middle"/></a></div>
                         </div>
                         <div>
-                            <div align="center"><a href="<?php echo URL; ?>reg/newparent"> Add New Parent</a></div>
+                            <div align="center"><a href="<?php echo URL; ?>allstudentclass/index">Manage Classes</a></div>
                         </div>
                     </div>
+
                 </td>
                 <td>
                     <div style="width: 200px;float:left">
@@ -175,25 +178,9 @@
 
 
                 </td>
+               
                 <td>
-
-                    <div style="width: 200px;float:left">
-
-                            <div id="setting2" style="text-align:left">
-                                <div align="center"><a href="<?php echo URL; ?>viewpost/index"><img
-                                                src="<?php echo URL; ?>views/dashboard/includes/teacher.gif" alt=""
-                                                width="70" align="middle"/></a></div>
-                            </div>
-                        <div>
-                            <div align="center"><a href="<?php echo URL; ?>viewpost/index">View Statistics</a></div>
-                        </div>
-
-                    </div>
-
-
-                </td>
-                <td>
-
+<div>
                     <div style="width: 200px;float:left">
 
                         <div id="setting2" style="text-align:left">
@@ -207,31 +194,15 @@
 
 
                     </div>
-
-
-                </td>
-
-            </tr>
-
-            <tr>
-                <td>
-
-                    <div style="width: 200px;float:left">
-
-                        <div id="setting2" style="text-align:left">
-                            <div align="center"><a href="<?php echo URL; ?>allstudentclass/index"><img
-                                            src="<?php echo URL; ?>views/dashboard/includes/teacher.gif" alt=""
-                                            width="70" align="middle"/></a></div>
-                        </div>
-                        <div style="margin-bottom: 100px!important;">
-                            <div align="center"><a href="<?php echo URL; ?>allstudentclass/index">Manage Classes</a></div>
-                        </div>
-                    </div>
-
+</div>
 
                 </td>
 
-            </tr>
+           
+                </tr>
+ 
+
+           
 
 
         </table>
