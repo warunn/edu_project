@@ -11,6 +11,16 @@ class studentmarks_model extends model{
             exit;
         }
     }
+    public function postMarksTODB($std_id,$subjects,$term,$marks,$batch,$class,$Created_year)
+    {
+        try {
+            $sth = $this->db->prepare("INSERT INTO `marks`(`std_id`, `subjects`, `term`, `marks`, `batch`, `class`, `Created_year`)
+                VALUES ('{$std_id}','{$subjects}','{$term}','{$marks}','{$batch}','{$class}','{$Created_year}')");
+            $sth->execute();
+        } catch (Exception $e) {
+        }
+
+    }
 
 
     public function classList($uid){

@@ -35,7 +35,7 @@
                         <td style="padding: 10px"><?php echo $Student_classes[$value[4]] ?></td>
                         <td style="padding: 10px"><?php echo $value[5] ?></td>
                         <td style="padding: 10px">
-                            <form action="<?php echo URL; ?>location/getDataAccordingToLocation?location=<?php echo $value[1] ?>&count=<?php echo $value[0] ?>"
+                            <form action="<?php echo URL; ?>studentmarks/marks?stuid=<?php echo $value[0] ?>&batch=<?php echo $value[3]?>&class=<?php echo $value[4]?>"
                                   method="post" enctype="multipart/form-data">
                                 <input type="submit" class="btn btn-info" value="info" name="<?php echo $value[1] ?>"/>
                             </form>

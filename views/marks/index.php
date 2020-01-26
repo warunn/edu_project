@@ -5,7 +5,7 @@
             <tr>
 
                 <td>
-                    <h3 style="margin-bottom: 10px">Add Teachers to Classes</h3>
+                    <h3 style="margin-bottom: 10px">Select a Teacher To Add Marks</h3>
                     <form action="<?php echo URL; ?>marks/getStudentsFromClassTable" method="post"
                           enctype="multipart/form-data">
                         Select a Teacher:<br>
@@ -23,6 +23,11 @@
                         <input type="submit" name="submit-teacher" value="Submit">
                         <button type="button" class="btn btn-warning" onclick="goBack()">Go Back</button>
                     </form>
+                </td>
+                <td style="padding: 100px">
+                    <?php if(!empty($this->msg)){
+                        echo $this->msg;
+                    }?>
                 </td>
             </tr>
         </table>
