@@ -235,7 +235,7 @@ public function delete($aid){
         $pic=$tresult["link"];
         $file=$pic;
         //fclose($file);
-        //echo $file;
+        echo $file;
         if(file_exists($file)){
             chmod($file,0777);
         }

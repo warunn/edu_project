@@ -98,7 +98,9 @@ class article extends controller{
 	        //echo "hello";
 	        //print_r($_POST);
 	        header('location:'.URL);
-	    } 
+	    } else {
+	        
+	    }
 	  //echo $id;
 		$this->result1=$this->model->read1($id);
 		$this->view->msg=$this->result1;
@@ -176,20 +178,20 @@ class article extends controller{
 		            
 		            $e=$e+1;
 		        }
-		       // print_r($_FILES);
+		        //print_r($_FILES);
 		        
 		        $e=1;
 		        while($e<=15){
 		            //echo $_FILES["npic{$e}"];
-		            if(isset($_POST["pic{$e}"]) and empty($_FILES["npic{$e}"]) and $_POST["pi{$e}"]=="1" and $e>3){
-		                //echo "delete ".$e."<br/>";
+		            if(isset($_POST["pic{$e}"]) and empty($_FILES["npic{$e}"]["name"]) and $_POST["pi{$e}"]=="1" and $e>3){
+		               // echo "delete ".$e."<br/>";
 		                $this->model->deletepic($postid,$_POST["pic{$e}"],$e);
 		            }
-		            elseif(isset($_POST["pic{$e}"]) and !empty($_FILES["npic{$e}"])){
+		            elseif(isset($_POST["pic{$e}"]) and !empty($_FILES["npic{$e}"]["name"])){
 		                //echo "update ".$e."<br/>";
 		                $this->model->updatepic($postid,$_POST["pic{$e}"],$e);
 		            }
-		            elseif(!isset($_POST["pic{$e}"]) and !empty($_FILES["npic{$e}"])){
+		            elseif(!isset($_POST["pic{$e}"]) and !empty($_FILES["npic{$e}"]["name"])){
 		                //echo "insert ".$e."<br/>";
 		                //print_r($_FILES);
 		                $this->model->insertpic($postid,$_POST["pic{$e}"],$e);
