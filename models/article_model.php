@@ -122,8 +122,8 @@ public function delete($aid){
         $result=$sth->fetch();
 
         try {
-
-            $query1 = "insert into post_counts(post_id) values('{$id}')";
+            $current_Date= date("Y-m-d");
+            $query1 = "insert into post_counts(post_id,post_time) values('{$id}','{$current_Date}')";
             $sth=$this->db->prepare($query1);
             $sth->execute();
         } catch (Exception $e) {
