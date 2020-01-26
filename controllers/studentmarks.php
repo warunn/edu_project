@@ -30,7 +30,7 @@ class Studentmarks extends controller{
         $subSet =['Mathematics','Science','English','Sinhala','Buddhism','History',$_POST['section01'],$_POST['section02'],$_POST['section03']];
         $marksSet =[$_POST['Mathematics'],$_POST['Science'],$_POST['English'],$_POST['Sinhala'],$_POST['Buddhism'],$_POST['History'],$_POST['section01-sub'],$_POST['section02-sub'],$_POST['section03-sub']];
         $result = $this->model->postMarksTODB($std_id,implode( ",",$subSet),$term,implode( ",",$marksSet),$batch,$class,$Created_year);
-        $this->view->msg='Data sis added';
+        $this->view->msg='Data is added';
         $this->view->render("marks/index");
     }
 
